@@ -1,0 +1,4 @@
+We fixed these typos.
+
+Further thoughts for comparing with diffusion models.
+We have a small discussion in the related works. Diffusion models simulate a different path $\\{q_t\\}\_{t\geq0}$ compared to GAN and this path is longer than GAN because the SDE of diffusion models has no drift force. Diffusion models record the vector field by a time-embeded neural network such that it can directly push particles to the target distribution but GANs need to update the density ratio and compute its gradient to obtain the vector field. Density ratio estimation is a hard especially when two distribution are disjoint or their supports are not overlapped well. In such case, the ratio can be extremely large or small. To stabilize density ratio estimation, we often need regularizer such as gradient penalty or entropy term. Logistic regression (JSD) is a stabilized method since its output is associated with Sigmoid function which bounds extreme values between 0 and 1.
