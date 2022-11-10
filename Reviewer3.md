@@ -1,6 +1,6 @@
 * **Why $\mathcal{T}$ must be a bijection?**
 
-As we have explained in Lemma 3.3, the density ratio is $r(x) = \mathcal{T}^{-1}[d(x)]$, hence $\mathcal{T}$ must be a bijection such that its 
+As we have explained in Lemma 3.3, the density ratio is $d(x) = \mathcal{T}^{-1}[r(x)]$, hence $\mathcal{T}$ must be a bijection such that its 
 inverse exists.
 
 * **Which precise space is $d$ optimized, and what are the hypotheses on $\phi$ and $\psi$?**
