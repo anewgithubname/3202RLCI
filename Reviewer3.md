@@ -21,7 +21,7 @@ $$
 this is the probability evoluation of Langevin dynamics or the log density ratio ODE of Eq(4) where $h$ is an identity mapping. 
 The equilibrium is achieved if the probabilty current (flux) $q_t(\nabla_x \log q_t - \nabla_x \log p)$ is zero, 
 meaning there is no net flow and $\frac{\partial q_t}{\partial t} = 0 $. Solving the differential equation $q_t(\nabla_x \log q_t - \nabla_x \log p)=0$, 
-we have $q_t=p$ if we assume $p$ is a proper normalized distribution. This convergence is a well established theory. 
+we have $q_t=p$ if we assume $p$ is a proper normalized distribution. This convergence is a well established theory, see section 1.2 and 1.3 by https://userswww.pd.infn.it/~orlandin/fisica_sis_comp/fokker_planck.pdf. There is a sufficient boundary condition where the target density $p$, e.g. a Boltzmann distribution,  decays fast at $x \to \infty$ to satisfy the normalization condition (Eq 1.85 in https://userswww.pd.infn.it/~orlandin/fisica_sis_comp/fokker_planck.pdf). In order to satisfy the boundary condtion, probability current must be uniformly zero everywhere at equilibrium. 
 
 For MonoFlow, the continuity equation is 
 
@@ -37,3 +37,7 @@ $$
 
 Since $h' > 0$, we have $q_t (\nabla_x \log q_t - \nabla_x \log p) =0$, this is the same situation as we have for the Fokker Planck equation. 
 Hence $q_t \to p$.
+**We added the hypothesis in the proof, assuming the target $p$ is a Boltzmann distribution, a general assumption in energy-based models, with the potential energy $-\log p$**.
+
+**A helpful inituitive understanding of the convergence of MonoFlow**.
+Since $h'$ is postive scalar function, it can be folded into the step size of Euler discritization. Different scales of $h'$ are reflected on the evolution speed of simulating the log density ratio ODE in Eq (4) which is the associated ODE of Langevin dynamics.
