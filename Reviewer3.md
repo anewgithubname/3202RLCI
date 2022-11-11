@@ -21,8 +21,9 @@ $$
 this is the probability evoluation of Langevin dynamics or the log density ratio ODE of Eq(4) where $h$ is an identity mapping. 
 The equilibrium is achieved if the probabilty current (flux) $q_t(\nabla_x \log q_t - \nabla_x \log p)$ is zero, 
 meaning there is no net flow and $\frac{\partial q_t}{\partial t} = 0 $. Solving the differential equation $q_t(\nabla_x \log q_t - \nabla_x \log p)=0$, 
-we have $q_t=p$ if we assume $p$ is a proper normalized distribution. This convergence of Langevin dynamics is a well established theory. For MonoFlow, the 
-continuity equation is 
+we have $q_t=p$ if we assume $p$ is a proper normalized distribution. This convergence of Langevin dynamics is a well established theory. 
+
+For MonoFlow, the continuity equation is 
 
 $$
 \frac{\partial q_t}{\partial t} = \text{div} (q_t h'(\log \frac{p}{q_t})(\nabla_x \log q_t - \nabla_x \log p))
