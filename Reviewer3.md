@@ -28,7 +28,7 @@ $$
 \frac{\partial q_t}{\partial t} = \text{div} (q_t h'(\log \frac{p}{q_t})(\nabla_x \log q_t - \nabla_x \log p))
 $$
 
-if we let the net flow be zero, we have 
+if we let the (probablity current) net flow be zero, we have 
 
 $$
 q_t h'(\log \frac{p}{q_t})(\nabla_x \log q_t - \nabla_x \log p) =0
