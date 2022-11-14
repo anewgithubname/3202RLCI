@@ -62,6 +62,8 @@ Since $h'$ is postive scalar function, it can be folded into the step size of Eu
 ### Q2. the novel contributions of this paper, highlighted above, are not clearly contextualized w.r.t. existing literature
 >While the related work section mentions previous work linking GANs and gradient flows, other works have tackled this topic as well: e.g., Huang & Zhang (2022) and Franceschi et al. (2022, cited elsewhere in the paper).
 
+Huang & Zhang (2022) studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$s do not follow a specific type of $f$-divergences.
+
 >the explanation behind the differences between adversarial training and VDM (Section 4.2) share similar arguments as Metz et al. (2017) and Franceschi et al. (2022)
 
 Metz et al. mentioned the optimal discriminator is a smooth function of $p_g$ but this smoothness gaurantees are lost during the practical algorithm. Franceschi et al. (2022) also claims that "the dependency of the optimal discriminator on the generator’s parameters are discarded". Their statements are different ways of experssing the stopping gradient operator which is used in our paper, but they did not further explain how this issue results in the difference between VDM and adversarial training. We have added citations of these two papers in section 4.2 for the discussion of VDM. 
