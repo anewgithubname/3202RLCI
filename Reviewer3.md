@@ -2,7 +2,7 @@ Dear reviewer,
 
 Thanks for acknowledging the novelty and the significance of our paper. We have made the amendations following your advice. 
 
-**Q1 Issues in the presentation and proofs of theoretical results**
+### Q1. Issues in the presentation and proofs of theoretical results
 >Why $\mathcal{T}$ must be a bijection?
 
 As we have explained in Lemma 3.3, the optimal discriminator is $d^\ast(x) = \mathcal{T}^{-1}[r(x)]$, hence $\mathcal{T}$ must be a bijection such that its 
@@ -53,12 +53,24 @@ $$
 
 is a standard property of continuity equation and Wasserstein gradient flow, see Chap 11 by Ambrosio et al (2008). Replace $v_t$ by the vector filed of MonoFlow, it is trivial to see the rate wrt. KL divergence is always negative if $q_t \neq p$. Since the dissipation is the time derivative of a functional, that means this functional is always decreasing with time evolution. 
 
-Given the above, theorem 1 tells us that MonoFlow is always decreasing KL when it converges to $p$.
+Given the above, theorem 1 tells us that MonoFlow is always decreasing KL while it converges to $p$.
 
 **A helpful inituitive understanding of the convergence of MonoFlow**.
 Since $h'$ is postive scalar function, it can be folded into the step size of Euler discritization. Different scales of $h'$ are reflected on the evolution speed of simulating the log density ratio ODE in Eq (4) which is the associated ODE of Langevin dynamics.
 
-**Q3 : Clarity issues**
+
+### Q2. the novel contributions of this paper, highlighted above, are not clearly contextualized w.r.t. existing literature
+>While the related work section mentions previous work linking GANs and gradient flows, other works have tackled this topic as well: e.g., Huang & Zhang (2022) and Franceschi et al. (2022, cited elsewhere in the paper).
+
+>the explanation behind the differences between adversarial training and VDM (Section 4.2) share similar arguments as Metz et al. (2017) and Franceschi et al. (2022)
+
+Metz et al. mentioned the optimal discriminator is a smooth function of $p_g$ but this smoothness gaurantees are lost during the practical algorithm. Franceschi et al. (2022) also claims that "the dependency of the optimal discriminator on the generator’s parameters are discarded". Their statements are different ways of experssing the stopping gradient operator which is used in our paper, but they did not further explain how this issue results in the difference between VDM and adversarial training. We have added citations of these two papers in section 4.2 for the discussion of VDM. 
+
+>Finally, I would suggest the authors to amend the qualification of Monoflow as a "unified generative modeling framework", as it is restricted to some GANs, even through covering many models.
+
+We added "divergence GANs" in the title.
+
+### Q3. Clarity issues
 
 >In Section 1, authors state that "[the discriminator] is a function only depending on samples  and does not include any density information from the generator’s distribution". This statement, that is repeated throuhout the paper, is quite obscure and should be clarified. This is especially the case in Section 4.2 where it helps understanding the differences between adversarial training and VDM. Moreover, I believe that the correct statement would be that this dependency does exist, but it is ignored when optimizing the generator (as expressed by the stop gradient operator of Section 4.3).
 
@@ -76,11 +88,13 @@ For $r(x , \theta\_{de})$ and $r\_{GAN}(x)$, the requirement is the cost functio
 >The empirical illustration of Section 5.1 does not quite match the theory without explanations.
 
 Our sections 5.1 **does match** with the theory. We have explained that MonoFlow can work with any monotonically increasing functions. In section 5.1, 
-we analyzed how the monotonicity influences the convergences of GANs by Eq (6) via the derivative $h'$ . For vanilla loss and MLE loss, the derivatives are nearly zeros when $d(x)$ (log density ratio) is less than zero. From Eq (6), we can see $\mathrm{d}x_t \approx 0$ because $h'\approx 0$. This means a slow convergence and this is the main reason causing gradient vanishing **(because the rescaled vector field is too small)**, just like an extremely small learning rate. In section 5.2, we have shown that the gradient vanishing problem can be simply fixed by just shifting the function to get non-zero $h'$.
+we analyzed how the monotonicity influences the convergences of GANs by Eq (6) via the derivative $h'$ . For vanilla loss and MLE loss, the derivatives are nearly zeros when $d(x)$ (log density ratio) is less than zero. From Eq (6), we can see $\mathrm{d}x_t \approx 0$ because $h'\approx 0$. This means a slow convergence and this is the main reason causing gradient vanishing **(because the rescaled vector field is too small)**, just like multiplying an extremely small learning rate. In section 5.2, we have shown that the gradient vanishing problem can be simply fixed by just shifting the function to get non-zero $h'$.
 
 >Less importantly, contrary to the statement in Section 3.2 that the discriminator is optimized by a "one-step gradient update".
->
-This is true, we can apply multiple-step optimization to get more accurate approximation of density ratios. We have changed it to ''a few number of gradient update'' in our paper.
 
+This is true, we can apply multiple-step optimization to get more accurate approximation of density ratios. We have changed it to "a few number of gradient update" in our paper.
 
+Reference 
+\Metz et al. Unrolled Generative Adversarial Networks. ICML 2017.
+\Huang & Zhang. GANs as Gradient Flows that Converge. arXiv, 2022.
 
