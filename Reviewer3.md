@@ -65,6 +65,8 @@ Since $h'$ is postive scalar function, it can be folded into the step size of Eu
 Thanks for reminding us of the work by Huang & Zhang (2022). We found that they studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$ does not follow a specific type of $f$-divergences. Huang & Zhang (2022) can be regarded as a special case for designing a specific $h$ whereas our work focus on the generalization of divergence GANs and revealing the difference compared to VDM. Moreover, we found 
 Huang & Zhang (2022) is a repilcate of Gao et al (2019) as their algorithms are identical whereas Gao et al (2019) considers more general $f$-divergences. Gao et al (2019) was cited in our paper under theorem 3.2 and we added more explainations to discuss the difference.
 
+Franceschi et al (2022) focuses on the NTK view given a generator losses and they also discussed some IPM GAN losses, while our paper focuses on how generator losses can work. We proposed a framwork that finds a partile ODE where the divergence GAN can work.
+
 
 
 >the explanation behind the differences between adversarial training and VDM (Section 4.2) share similar arguments as Metz et al. (2017) and Franceschi et al. (2022)
