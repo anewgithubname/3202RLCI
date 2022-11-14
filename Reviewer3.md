@@ -14,9 +14,14 @@ There is no restriction for the space of $d$, it can be any measurable functions
 e.g, a linear model or a neural net. We previously followed the convenctions of standard divergence GANs where $d$'s space is not particularly specified 
 but now we added this explainations in the revision. 
 
+加引用，说别人也是这么写的。
+
 >I do not understand how the proof of Theorem 3.1
 
-Thanks for pointing it out. The proof might not be really straightforward for people who are not familiar with continuty equation. 
+Thanks for pointing it out. Below are come detailed explanations. 
+
+> but nothing indicates that the gradient flow tends to this equilibrium.
+
 First, consider the Fokker Planck equation in Eq (3),
 
 $$
@@ -53,7 +58,7 @@ $$
 
 is a standard property of continuity equation and Wasserstein gradient flow, see Chap 11 by Ambrosio et al (2008). Replace $v_t$ by the vector filed of MonoFlow, it is trivial to see the rate wrt. KL divergence is always negative if $q_t \neq p$. Since the dissipation is the time derivative of a functional, that means this functional is always decreasing with time evolution. 
 
-Given the above, theorem 1 tells us that MonoFlow is always decreasing KL while it converges to $p$.
+Given the above, theorem 1 tells us that MonoFlow is always decreasing KL while it converges to $p$. Therefore, this indicates that the gradient flow always tends to this equilibrium. 
 
 **A helpful inituitive understanding of the convergence of MonoFlow**.
 Since $h'$ is postive scalar function, it can be folded into the step size of Euler discritization. Different scales of $h'$ are reflected on the evolution speed of simulating the log density ratio ODE in Eq (4) which is the associated ODE of Langevin dynamics.
@@ -62,16 +67,22 @@ Since $h'$ is postive scalar function, it can be folded into the step size of Eu
 ### Q2. the novel contributions of this paper, highlighted above, are not clearly contextualized w.r.t. existing literature
 >While the related work section mentions previous work linking GANs and gradient flows, other works have tackled this topic as well: e.g., Huang & Zhang (2022) and Franceschi et al. (2022, cited elsewhere in the paper).
 
-Thanks for reminding us of the work by Huang & Zhang (2022). We found that they studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$ does not follow a specific type of $f$-divergences. Huang & Zhang (2022) can be regarded as a special case for designing a specific $h$ whereas our work focus on the generalization of divergence GANs and revealing the difference compared to VDM. Moreover, we found 
+Thanks for reminding us of the work by Huang & Zhang (2022). 
+
+Moreover, we found 
 Huang & Zhang (2022) is a repilcate of Gao et al (2019) as their algorithms are identical whereas Gao et al (2019) considers more general $f$-divergences. Gao et al (2019) was cited in our paper under theorem 3.2 and we added more explainations to discuss the difference.
 
-Franceschi et al (2022) focuses on the NTK view given a generator losses and they also discussed some IPM GAN losses, while our paper focuses on how generator losses can work. We proposed a framwork that finds a partile ODE where the divergence GAN can work.
+We found that they studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$ does not follow a specific type of $f$-divergences. Huang & Zhang (2022) can be regarded as a special case for designing a specific $h$ whereas our work focus on the generalization of divergence GANs and revealing the difference compared to VDM. 
 
+Franceschi et al (2022) focuses on the NTK view given a generator losses and they also discussed some IPM GAN losses, while our paper focuses on how generator losses can work. 将详细一点。 We proposed a framwork that finds a partile ODE where the divergence GAN can work. 
 
+We have added these dicussions in the revisons. 
 
 >the explanation behind the differences between adversarial training and VDM (Section 4.2) share similar arguments as Metz et al. (2017) and Franceschi et al. (2022)
 
 Metz et al. mentioned the optimal discriminator is a smooth function of $p_g$ but this smoothness gaurantees are lost during the practical algorithm. Franceschi et al. (2022) also claims that "the dependency of the optimal discriminator on the generator’s parameters are discarded". Their statements are different ways of experssing the stopping gradient operator which is used in our paper, but they did not further explain how this issue results in the difference between VDM and adversarial training. We have added citations of these two papers in section 4.2 for the discussion of VDM. 
+
+We have added these dicussions in the revisons. 
 
 >Finally, I would suggest the authors to amend the qualification of Monoflow as a "unified generative modeling framework", as it is restricted to some GANs, even through covering many models.
 
@@ -79,9 +90,9 @@ We added "divergence GANs" in the title.
 
 ### Q3. Clarity issues
 
->In Section 1, authors state that "[the discriminator] is a function only depending on samples  and does not include any density information from the generator’s distribution". This statement, that is repeated throuhout the paper, is quite obscure and should be clarified. This is especially the case in Section 4.2 where it helps understanding the differences between adversarial training and VDM. Moreover, I believe that the correct statement would be that this dependency does exist, but it is ignored when optimizing the generator (as expressed by the stop gradient operator of Section 4.3).
+>In Section 1, authors state that "[the discriminator] is a function only depending on samples  and does not include any density information from the generator’s distribution". This statement, that is repeated throuhout the paper, is quite obscure and should be clarified. This is especially the case in Section 4.2 where it helps understanding the differences between adversarial training and VDM. Moreover, I believe that the correct statement would be that this dependency does exist, but it is ignored when optimizing the generator (as expressed by the stop gradient operator of Section 4.3). 
 
-Yes, your understanding is correct. It might depend on how we interpret the word "dependency". To avoid ambiguity, we change the words to "the discriminator cannot capture the variability of $p_g$". 
+Yes, your understanding is correct. The word "dependency" might be ambigous. To clarify, we change the words to "the discriminator cannot capture the variability of $p_g$". 想个办法把他的意见加入我们的revision. 
 
 >The contribution of Section 4.1 w.r.t. results of the previous sections are not immediate and should be explicated.
 
@@ -94,7 +105,10 @@ For $r(x , \theta\_{de})$ and $r\_{GAN}(x)$, the requirement is the cost functio
 
 >The empirical illustration of Section 5.1 does not quite match the theory without explanations.
 
-Our sections 5.1 **does match** with the theory. We have explained that MonoFlow can work with any monotonically increasing functions. In section 5.1, 
+Our sections 5.1 **does match** with the theory. 
+However, the convergence is very slow.... (结论放前面)
+
+We have explained that MonoFlow can work with any monotonically increasing functions. In section 5.1, 
 we analyzed how the monotonicity influences the convergences of GANs by Eq (6) via the derivative $h'$ . For vanilla loss and MLE loss, the derivatives are nearly zeros when $d(x)$ (log density ratio) is less than zero. From Eq (6), we can see $\mathrm{d}x_t \approx 0$ because $h'\approx 0$. This means a slow convergence and this is the main reason causing gradient vanishing **(because the rescaled vector field is too small)**, just like multiplying an extremely small learning rate. In section 5.2, we have shown that the gradient vanishing problem can be simply fixed by just shifting the function to get non-zero $h'$.
 
 >Less importantly, contrary to the statement in Section 3.2 that the discriminator is optimized by a "one-step gradient update".
