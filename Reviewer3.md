@@ -5,7 +5,7 @@ Thanks for acknowledging the novelty and the significance of our paper. We have 
 **Q1 Issues in the presentation and proofs of theoretical results**
 >Why $\mathcal{T}$ must be a bijection?
 
-As we have explained in Lemma 3.3, the density ratio is $d(x) = \mathcal{T}^{-1}[r(x)]$, hence $\mathcal{T}$ must be a bijection such that its 
+As we have explained in Lemma 3.3, the optimal discriminator is $d^\ast(x) = \mathcal{T}^{-1}[r(x)]$, hence $\mathcal{T}$ must be a bijection such that its 
 inverse exists.
 
 >Which precise space is $d$ optimized, and what are the hypotheses on $\phi$ and $\psi$?
