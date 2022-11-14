@@ -62,7 +62,10 @@ Since $h'$ is postive scalar function, it can be folded into the step size of Eu
 ### Q2. the novel contributions of this paper, highlighted above, are not clearly contextualized w.r.t. existing literature
 >While the related work section mentions previous work linking GANs and gradient flows, other works have tackled this topic as well: e.g., Huang & Zhang (2022) and Franceschi et al. (2022, cited elsewhere in the paper).
 
-Huang & Zhang (2022) studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$s do not follow a specific type of $f$-divergences.
+Thanks for reminding us of the work by Huang & Zhang (2022). We found that they studied a specific case where their ODE is the Wasserstein gradient flow of Jensen-Shannon divergence (JSD), it can be verified that Eq (2.14) in Huang & Zhang (2022) satisfies our **theorem 3.2** where $f$ is the function following JSD. However, as it is dicussed in our paper, the gradient flow of GANs is not related to JSD, neither under the vanilla loss or the non-saturated loss as their associated $h$ does not follow a specific type of $f$-divergences. Huang & Zhang (2022) can be regarded as a special case for designing a specific $h$ whereas our work focus on the generalization of divergence GANs and revealing the difference compared to VDM. Moreover, we found 
+Huang & Zhang (2022) is a repilcate of Gao et al (2019) as their algorithms are identical whereas Gao et al (2019) considers more general $f$-divergences. Gao et al (2019) was cited in our paper under theorem 3.2 and we added more explainations to discuss the difference.
+
+
 
 >the explanation behind the differences between adversarial training and VDM (Section 4.2) share similar arguments as Metz et al. (2017) and Franceschi et al. (2022)
 
@@ -99,4 +102,5 @@ This is true, we can apply multiple-step optimization to get more accurate appro
 Reference 
 \Metz et al. Unrolled Generative Adversarial Networks. ICML 2017.
 \Huang & Zhang. GANs as Gradient Flows that Converge. arXiv, 2022.
+\Gao et al. Deep generative learning via variational gradient flow. ICML, 2022.
 
